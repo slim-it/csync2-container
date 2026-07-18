@@ -1,4 +1,4 @@
-FROM ubuntu:26.04
+FROM ubuntu:resolute
 
 ARG CSYNC2_VERSION
 LABEL org.opencontainers.image.title="csync2 container"
