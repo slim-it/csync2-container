@@ -26,9 +26,9 @@ jobs:
           version="$(tr -d '[:space:]' < VERSION)"
           test -n "$version"
           echo "version=$version" >> "$GITHUB_OUTPUT"
-          # Release tag: the packaged version without the snapshot hash and
-          # packaging revision (2.0-42-g83b3644-4 -> 2.0.42), so Renovate
-          # orders it with no extra configuration.
+          # Release tag: the packaged version stripped of its snapshot hash and
+          # packaging revision, so Renovate orders it with no extra
+          # configuration.
           echo "release=$(sed -E 's/-g[0-9a-f]+-[0-9]+$//; s/-/./g' <<<"$version")" >> "$GITHUB_OUTPUT"
 
       - name: Set up Docker Buildx
