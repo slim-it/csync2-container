@@ -4,7 +4,10 @@ ARG CSYNC2_VERSION
 LABEL org.opencontainers.image.title="csync2 container"
 LABEL org.opencontainers.image.description="csync2 cluster file synchronization from the Ubuntu package"
 LABEL org.opencontainers.image.source="https://github.com/slim-it/csync2-container"
-LABEL org.opencontainers.image.version="${CSYNC2_VERSION}"
+# The tag drops the packaging revision, and CI overwrites the standard
+# image.version annotation with the tag, so this is where the exact packaged
+# version a given image contains is recorded.
+LABEL nl.slim-it.csync2.version="${CSYNC2_VERSION}"
 
 RUN test -n "${CSYNC2_VERSION}" \
     && apt-get update \
